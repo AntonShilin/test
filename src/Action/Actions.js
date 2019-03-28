@@ -42,10 +42,10 @@ export function f4(value) {
   };
 }
 
-export function f5(value,tag) {
+export function f5(value, tag) {
   return {
     type: ANSWER_5,
-      payload: value,
+    payload: value,
     tag: tag
   };
 }
@@ -110,17 +110,15 @@ export function showChart(data) {
   let count_typeDemension = typeDemension.group().reduceSum(d => d.count);
 
   pieChart
-    .width(500)
-    .height(300)
+    .width(300)
+    .height(400)
     .ordinalColors(["#FF0000", "#32CD32"])
     .label(function(d) {
       return d.key + ": " + d.value;
     })
-    .legend(dc.legend().x(350).y(0).gap(5))
+    .legend(dc.legend().x(10).y(0).gap(5))
     .dimension(typeDemension)
     .group(count_typeDemension);
 
   pieChart.render();
 }
-
-
