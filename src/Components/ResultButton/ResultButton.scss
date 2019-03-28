@@ -1,0 +1,26 @@
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline;
+}
+
+.bg_modalwindow {
+  background-color: rgba(192, 192, 192, 0.3);
+  width: 100%;
+  min-height: 1300px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  .modalwindow {
+    border: 1px solid red;
+    background-color: white !important;
+    width: 75%;
+    min-height: 300px;
+    margin: 90% auto 0 auto;
+    button {
+      width: 75px;
+    }
+  }
+}

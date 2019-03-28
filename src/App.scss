@@ -1,0 +1,24 @@
+.jumbotron {
+  background-color: lavender !important;
+  border-radius: 0 !important;
+}
+
+.container{
+  max-width: 1800px;
+  position: relative;
+}
+
+p:hover {
+  cursor: pointer;
+}
+
+a {
+  padding: 0.5rem;
+  color: white !important;
+  font-size: 1.3rem;
+  &:hover {
+    text-decoration: none !important;
+    color: #FF4500 !important;
+  }
+}
+

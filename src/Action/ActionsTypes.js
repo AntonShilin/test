@@ -1,0 +1,10 @@
+export const ANSWER_1 = 'ANSWER_1';  
+export const ANSWER_2 = 'ANSWER_2';  
+export const ANSWER_3 = 'ANSWER_3';  
+export const ANSWER_4 = 'ANSWER_4';  
+export const ANSWER_5 = 'ANSWER_5';  
+export const YES = 'YES';  
+export const CLEAR_INPUTS = 'CLEAR_INPUTS';  
+export const AGREE = 'AGREE';  
+export const DISAGREE = 'DISAGREE';  
+export const SHOW_CHART = 'SHOW_CHART';  
