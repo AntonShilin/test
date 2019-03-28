@@ -116,7 +116,6 @@ export function showChart(data) {
     .label(function(d) {
       return d.key + ": " + d.value;
     })
-    .legend(dc.legend().x(10).y(0).gap(5))
     .dimension(typeDemension)
     .group(count_typeDemension);
 
