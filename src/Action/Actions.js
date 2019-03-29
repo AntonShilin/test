@@ -111,7 +111,7 @@ export function showChart(data) {
 
   pieChart
     .width(300)
-    .height(400)
+    .height(300)
     .ordinalColors(["#FF0000", "#32CD32"])
     .label(function(d) {
       return d.key + ": " + d.value;

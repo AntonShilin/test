@@ -71,15 +71,14 @@ export default function reducerForQuestion(state = initiallState, action) {
 
     case ANSWER_2:
       if (action.payload.checked) {
-        if (state[1].userAnswer.length<3) {
-          state[1].userAnswer.push(action.payload.value)
+        if (state[1].userAnswer.length < 3) {
+          state[1].userAnswer.push(action.payload.value);
         }
       } else if (!action.payload.checked) {
-        let index = state[1].userAnswer.indexOf(action.payload.value)
-        state[1].userAnswer.splice(index,1)
-        
-    }
-         //  state[1].userAnswer.push(action.payload.value);
+        let index = state[1].userAnswer.indexOf(action.payload.value);
+        state[1].userAnswer.splice(index, 1);
+      }
+      //  state[1].userAnswer.push(action.payload.value);
       return state;
 
     case ANSWER_3:
@@ -92,7 +91,7 @@ export default function reducerForQuestion(state = initiallState, action) {
 
     case ANSWER_5:
       state[4].userAnswer = action.payload;
-      action.tag.classList.toggle('choose');
+      action.tag.classList.toggle("choose");
       return state;
 
     case YES:
@@ -107,27 +106,31 @@ export default function reducerForQuestion(state = initiallState, action) {
         }
       }
 
+
+        // Проверяем на все ли вопросы пользователь ответил
+        if (state[5].resultUserAnswer.includes("")) {
+          showWindow();
+        } else if (state[5].resultUserAnswer[1].length === 0) {
+          showWindow();
+        } else {
+          action.page.history.push("/resultspage/");
+      }
+      
+
       //считаем правильные и неправильные ответы
       if (state[5].resultUserAnswer.length > 0) {
         state[5].resultUserAnswer.map(value => {
           if (state[5].defaultAnswers.includes(value)) {
-            state[5].yes = state[5].yes + 1;
+            state[5].yes += 1;
           } else {
-            state[5].no = state[5].no + 1;
+            state[5].no += 1;
           }
         });
+
+      
+
       }
 
-      // Проверяем на все ли вопросы пользователь ответил
-      if (state[5].resultUserAnswer.includes("")) {
-        showWindow();
-      } else if (state[5].resultUserAnswer[1].length === 0) {
-        showWindow();
-      } else {
-        action.page.history.push("/resultspage/");
-      }
-
-      //console.log(state[5].resultUserAnswer[1].length);
 
       return state;
 
@@ -151,7 +154,6 @@ export default function reducerForQuestion(state = initiallState, action) {
         }
       }
 
-      //console.log(action.payload.allQuestions[i].userAnswer);
       return state;
 
     case AGREE:
@@ -159,6 +161,32 @@ export default function reducerForQuestion(state = initiallState, action) {
       return state;
 
     case DISAGREE:
+      // снимаем флажки
+      document.querySelector("select").value = "";
+      let inputs = document.querySelectorAll("input:checked");
+      inputs.forEach(element => {
+        element.checked = false;
+      });
+      document.querySelector("input[type='text']").value = "";
+
+      //проходим по каждому ответу пользователя и очищаем
+      for (let i = 0; i < action.payload.allQuestions.length - 1; i++) {
+        if (typeof action.payload.allQuestions[i].userAnswer === "string") {
+          action.payload.allQuestions[i].userAnswer = "";
+        } else if (
+          typeof action.payload.allQuestions[i].userAnswer === "object"
+        ) {
+          action.payload.allQuestions[i].userAnswer = [];
+        }
+      }
+
+      action.payload.allQuestions[5].no = 0;
+      action.payload.allQuestions[5].yes = 0;
+      action.payload.allQuestions[5].resultUserAnswer.splice(
+        0,
+        action.payload.allQuestions[5].resultUserAnswer.length
+      );
+
       hideWindow();
       return state;
 
