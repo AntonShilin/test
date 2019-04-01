@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { f1 } from "../../Action/Actions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { f1 } from '../../Action/Actions';
 
 class SelectForm extends Component {
     render() {
     return (
-      <div className="card p-3 alert-warning shadow text-dark">
+      <div className='card p-3 alert-warning shadow text-dark'>
          <h6 className='pb-3'>
           <span>{`${this.props.data.num}. `}</span>
           {this.props.data.question}
         </h6>
         <form>
-          <div className="form-group">
-            <label htmlFor="answ">Выберите правильный ответ:</label>
+          <div className='form-group'>
+            <label htmlFor='answ'>Выберите правильный ответ:</label>
             <select
-              className="form-control"
-              id="answ"
+              className='form-control'
+              id='answ'
               onChange={event => this.props.handleChange(event.target.value)}
             >
               <option />

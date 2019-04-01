@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { f2} from "../../Action/Actions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { f2} from '../../Action/Actions';
 
 class CheckBoxForm extends Component {
   render() {
     return (
-      <div className="card p-3 alert-success shadow text-dark">
+      <div className='card p-3 alert-success shadow text-dark'>
         <h6 className='pb-3'>
           <span>{`${this.props.data.num}. `}</span>
           {this.props.data.question}
         </h6>
           <form>
             {this.props.data.answer.map((value, i) => (
-              <div className="form-check" key={i}>
-                <label className="form-check-label" htmlFor={value}>
+              <div className='form-check' key={i}>
+                <label className='form-check-label' htmlFor={value}>
                   <input
-                    type="checkbox"
-                    className="form-check-input"
+                    type='checkbox'
+                    className='form-check-input'
                     id={value}
                     value={value}
                     onChange={event => this.props.handleChange(event.target)}

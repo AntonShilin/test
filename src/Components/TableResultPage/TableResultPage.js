@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import "../TableResultPage/TableResultPage.scss";
-import { f10 } from "../../Action/Actions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import '../TableResultPage/TableResultPage.scss';
+import { f10 } from '../../Action/Actions';
 
 class TableResultPage extends Component {
   render() {
@@ -9,10 +9,10 @@ class TableResultPage extends Component {
     let userAnswers = this.props.data[5].resultUserAnswer;
     let { yes, no } = this.props.data[5];
     return (
-      <div className="container">
-        <div className="row">
-          <table className="table table-bordered mt-5 table-responsive-md table-hover">
-            <thead className="thead-dark">
+      <div className='container'>
+        <div className='row'>
+          <table className='table table-bordered mt-5 table-responsive-md table-hover'>
+            <thead className='thead-dark'>
               <tr>
                 <th>№</th>
                 <th>Правильный ответ</th>
@@ -28,10 +28,10 @@ class TableResultPage extends Component {
                   <td>
                     {Object.entries(userAnswers).length > 0
                       ? ` ${userAnswers[i]} `
-                      : "Нет ответа"}
+                      : 'Нет ответа'}
                   </td>
                   <td>
-                    {elem === userAnswers[i] ? "Правильно" : "Неправильно"}
+                    {elem === userAnswers[i] ? 'Правильно' : 'Неправильно'}
                   </td>
                 </tr>
               ))}
@@ -40,24 +40,24 @@ class TableResultPage extends Component {
         </div>
         {yes > 0 || no > 0 ? (
           <React.Fragment>
-            <div className="row mt-5 mb-5">
-              <div className="col">
+            <div className='row mt-5 mb-5'>
+              <div className='col'>
                 <button
-                  className="btn btn-primary d-block mx-auto"
+                  className='btn btn-primary d-block mx-auto'
                   onClick={() => this.props.showChart(this.props.data[5])}
                 >
                   Построить диаграмму результатов
                 </button>
               </div>
             </div>
-            <div className="row">
-              <div className="col">
-                <div id="chart" />
+            <div className='row'>
+              <div className='col'>
+                <div id='chart' />
               </div>
             </div>
           </React.Fragment>
         ) : (
-          ""
+          ''
         )}
       </div>
     );

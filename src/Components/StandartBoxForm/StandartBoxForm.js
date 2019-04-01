@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { f5 } from "../../Action/Actions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { f5 } from '../../Action/Actions';
 import '../StandartBoxForm/StandartBoxForm.scss'
 
 class StandartBoxForm extends Component {
   render() {
     return (
-      <div className="card p-3 alert-warning shadow text-dark">
-        <h6 className="pb-3">
+      <div className='card p-3 alert-warning shadow text-dark'>
+        <h6 className='pb-3'>
           <span>{`${this.props.data.num}. `}</span>
           {this.props.data.question}
         </h6>

@@ -9,10 +9,10 @@ import {
   AGREE,
   DISAGREE,
   SHOW_CHART
-} from "../Action/ActionsTypes";
-import * as crossfilter from "crossfilter";
-import * as dc from "dc";
-import * as d3 from "d3";
+} from '../Action/ActionsTypes';
+import * as crossfilter from 'crossfilter';
+import * as dc from 'dc';
+import * as d3 from 'd3';
 
 export function f1(value) {
   return {
@@ -89,21 +89,21 @@ export function f10(value) {
 }
 
 export function showWindow(value) {
-  let x = document.querySelector(".bg_modalwindow");
-  x.classList.remove("hide");
+  let x = document.querySelector('.bg_modalwindow');
+  x.classList.remove('hide');
 }
 
 export function hideWindow(value) {
-  let x = document.querySelector(".bg_modalwindow");
-  x.classList.add("hide");
+  let x = document.querySelector('.bg_modalwindow');
+  x.classList.add('hide');
 }
 
 // построение графика
 export function showChart(data) {
-  let pieChart = dc.pieChart("#chart");
+  let pieChart = dc.pieChart('#chart');
   let ndx = crossfilter([
-    { name: "answer", type: "Правильно", count: data.yes },
-    { name: "answer", type: "Неправильно", count: data.no }
+    { name: 'answer', type: 'Правильно', count: data.yes },
+    { name: 'answer', type: 'Неправильно', count: data.no }
   ]);
 
   let typeDemension = ndx.dimension(d => d.type);
@@ -112,9 +112,9 @@ export function showChart(data) {
   pieChart
     .width(300)
     .height(300)
-    .ordinalColors(["#FF0000", "#32CD32"])
+    .ordinalColors(['#FF0000', '#32CD32'])
     .label(function(d) {
-      return d.key + ": " + d.value;
+      return d.key + ': ' + d.value;
     })
     .dimension(typeDemension)
     .group(count_typeDemension);
